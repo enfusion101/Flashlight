@@ -6,10 +6,14 @@ import android.view.Menu;
 
 public class MainActivity extends Activity {
 
+	Flashlight flashLight;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        flashLight = new Flashlight();
+        flashLight.turnOnFlash();
     }
 
 
@@ -19,5 +23,14 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    
+    
+    public void onResume()
+    {
+    	super.onResume();
+    	flashLight.restoreLastState(); 	
+    }
+    
+    
     
 }
